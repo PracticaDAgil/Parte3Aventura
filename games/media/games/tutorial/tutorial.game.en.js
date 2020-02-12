@@ -29,18 +29,11 @@ undum.game.slideUpSpeed = 500
 /* The situations that the game can be in. Each has a unique ID. */
 undum.game.situations = {
     start: new undum.SimpleSituation(
-        "<h1>Starting Out with Undum</h1>\
-        <img src='media/games/tutorial/woodcut1.png' class='float_right'>\
-        <p>Welcome to the Undum tutorial. Undum is a tool for writing\
-        hypertext interactive fiction. It has some unique features\
-        and a visual design that encourages narrative games.</p>\
+        "<h1> La entrada a Kattegat. </h1>\
+        <img src='media/img/kattegat1.png' class='centro'>\
+        <p>ESTO VA EN NEGRITA</p>\
         \
-        <p>Hypertext interactive fiction is the digital equivalent of the\
-        Choose Your Own Adventure (CYOA) books that were popular in the\
-        1980s. The story is told in chunks, and you select from a range\
-        of options to move it forward. Unlike the book form, however, the\
-        digital form gives you far more flexibility to tell rich stories\
-        and introduce more interesting game elements.</p>\
+        <p>PRIMERA SITUACION AQUI</p>\
         \
         <p class='transient'>Click <a href='hub'>this link to\
         continue...</a></p>"
@@ -446,8 +439,14 @@ undum.game.start = "start";
  * possess. We don't have to be exhaustive, but if we miss one out then
  * that quality will never show up in the character bar in the UI. */
 undum.game.qualities = {
-    skill: new undum.IntegerQuality(
-        "Skill", {priority:"0001", group:'stats'}
+    corona: new undum.OnOffQuality(
+        "Corona", {priority:"0001", group:'stats'}
+    ),
+    espada: new undum.OnOffQuality(
+        "Espada", {priority:"0001", group:'stats'}
+    ),
+    monedas: new undum.IntegerQuality(
+        "Monedas", {priority:"0001", group:'stats'}
     ),
     stamina: new undum.NumericQuality(
         "Stamina", {priority:"0002", group:'stats'}
@@ -480,10 +479,9 @@ undum.game.qualityGroups = {
 /* This function gets run before the game begins. It is normally used
  * to configure the character at the start of play. */
 undum.game.init = function(character, system) {
-    character.qualities.skill = 12;
-    character.qualities.stamina = 12;
-    character.qualities.luck = 0;
-    character.qualities.novice = 1;
-    character.qualities.inspiration = 0;
-    system.setCharacterText("<p>You are starting on an exciting journey.</p>");
+    character.qualities.monedas = 100;
+    character.qualities.corona = 1;
+    character.qualities.espada = 1;
+//    character.qualities.novice = 1;
+    system.setCharacterText("<p>Comienzas con un tesoro en tu poder.</p>");
 };

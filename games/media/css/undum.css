@@ -184,9 +184,11 @@ a:hover {
     border-bottom: 1px dotted #900;
 }
 
-img.float_right {
-    float: right;
-    margin: 1.1em 0 1.1em 1.1em;
+img.centro {
+    vertical-align: center;
+    height: 350px;
+    width: 500px;
+   /* margin: 1.1em 0 1.1em 1.1em;*/
 }
 img.float_left {
     float: left;
