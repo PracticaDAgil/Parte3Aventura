@@ -177,8 +177,8 @@ a {
     border-bottom: 1px solid transparent;
 }
 a.raw {
-    padding-right: 14px;
-    background: transparent url("../img/kattegat1.png") no-repeat right 4px;
+    /*padding-right: 14px;*/
+    background: transparent url("../img/text_bg.jpg") no-repeat right 4px;
 }
 a:hover {
     border-bottom: 1px dotted #900;
