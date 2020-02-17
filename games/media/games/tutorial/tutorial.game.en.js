@@ -91,10 +91,13 @@ undum.game.situations = {
                            system.setCharacterText( "<p>Te has quedado con cincuenta monedas y sin corona</p>");
                            system.setQuality("monedas", 50);
                            system.setQuality("corona", false);
+						   system.doLink('verfamiliafinalconde');
                         },
                        'intentarasesinarle': function( character, system, action) {
                            system.setCharacterText( "<p>Te has quedado sin corona.</p>" );
                            system.setQuality("corona", false);
+						   system.doLink('finalmalo');
+						   system.setQuality("monedas", 0);
                        }
                }
            }
@@ -112,11 +115,31 @@ undum.game.situations = {
                 }
             }
         ),
-        verfamiliafinal: new undum.SimpleSituation (
-            "<h1>La casa de tu familia</h1>\
-            <p>Te reunes con tu familia tras mucho tiempo, sois felices y coméis perdices.</p>\
+		
+		 verfamiliafinalconde: new undum.SimpleSituation (
+            "<p>El conde te agradece tu actitud y permite que vayas a ver a tu familia.</p>\
+			<h1>La casa de tu familia</h1>\
+			<p>Te reunes con tu familia tras mucho tiempo, sois felices y coméis perdices.\
+			<a href='introduccion'> Volver a iniciar partida</a></p>\
             <img height=313 width=500 src='./media/img/familia_ragnar.jpg'>\
             <h1>FIN</h1>"
+        ),
+		
+        verfamiliafinal: new undum.SimpleSituation (
+            "<h1>La casa de tu familia</h1>\
+            <p>Te reunes con tu familia tras mucho tiempo, sois felices y coméis perdices.\
+			<a href='introduccion'> Volver a iniciar partida</a></p>\
+            <img height=313 width=500 src='./media/img/familia_ragnar.jpg'>\
+            <h1>FIN</h1>"
+        ),
+		
+		finalmalo: new undum.SimpleSituation (
+            "<h1></h1>\
+            <p>Ante tal estúpida idea, los soldados alzan sus armas y te bloquean el paso, eres detenido y te quitan todo el tesoro y te llevan preso.\
+			<a href='introduccion'> Volver a iniciar partida</a></p>\
+            <img src='./media/img/final_malo.jpg'>\
+            <h1>FIN</h1>"
+			
         )
 };
 
