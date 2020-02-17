@@ -49,15 +49,22 @@ undum.game.situations = {
             presencia en el condado pues sus soldados te han visto entrar.</p>",
             
         ),
+		
         verconde: new undum.SimpleSituation (
             "<h1>El salón del conde Haraldson</h1>\
             <img height=667 width=500 src='./media/img/conde1.jpg'>\
             <p>texto</p>"
         ),
-        verfamilia: new undum.SimpleSituation (
+		
+		verfamilia: new undum.SimpleSituation (
             "<h1>La casa de tu familia</h1>\
-            <p>texto</p>"
-        )
+            <p>Te estás dirigiendo a tu casa, y ves en la entrada dos hombres del Conde Haraldson custodiando la puerta.\
+			Uno de ellos te advierte que no puedes entrar, pues el Conde exige verte inmediatamente.\
+			Tú, Ragnar Lothbrok, uno de los vikingos con más éxito vivos, te contienes y decides calmarte e ir a <a href='verconde'>visitar al Conde,</a>\
+			pues no quieres crear problemas tan pronto.\
+			</p>"
+        ),
+        
 };
 
 // ---------------------------------------------------------------------------
