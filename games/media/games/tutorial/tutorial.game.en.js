@@ -47,16 +47,20 @@ undum.game.situations = {
             <p>Al entrar a la tribu puedes ir a <a href='verfamilia'>Visitar a tu familia,</a> la cual llevas varias \
             semanas sin ver, o <a href='verconde'>ir a ver al Conde Haraldson,</a> el cual ya ha sido advertido de tu \
             presencia en el condado pues sus soldados te han visto entrar.</p>",
-            
         ),
 		
         verconde: new undum.SimpleSituation (
             "<h1>El salón del conde Haraldson</h1>\
-            <p>Al entrar al salón, Haraldson te pregunta malhumorado:<br>-¿Por qué no viniste aquí primero al llegar? Sabes que estu obligación al volver de un saqueo.\
+            <p>Al entrar al salón, Haraldson te pregunta malhumorado:<br><br>  -¿Por qué no viniste aquí primero al llegar? Sabes que es tu obligación al volver de un saqueo.\
             <img height=667 width=500 src='./media/img/conde1.jpg'></p>\
-            <p>Tras esa desafiante preguntas decides <a href='pedirdisculpas'>pedirle disculpas</a>\
-             por tu actitud o responderle que tu deber es visitar a tu familia primero.\
+            <p>Tras esa desafiante pregunta decides <a href='pedirdisculpas'>pedirle disculpas</a>\
+             por tu actitud o responderle que <a href='deberfamilia'>tu deber es visitar a tu familia primero.</a>\
             </p>",
+            {
+                enter: function(character, system, from) {
+                    system.setCharacterText("<p>Este es tu inventario</p>");
+                }
+            }
         ),
         pedirdisculpas: new undum.SimpleSituation(
             "<p>El Conde te agradece las disculpas pero como es costumbre, te exige el pago de una parte del tesoro como impuestos del condado. Como te has disculpado\
@@ -64,27 +68,56 @@ undum.game.situations = {
              {
                  actions:{ 
                     'darmonedas': function( character, system, action) {
-                            "<p>hola</p>";
-                            system.setCharacterText( "<p>Te has quedado con 20 monedas.</p>" );
+                            system.setCharacterText( "<p>Te has quedado con veinte monedas.</p>" );
                             system.setQuality("monedas", 20);
+                            system.doLink('verfamiliafinal');
                         },
-                        'darcorona': function( character, system, action) {
-                            "<p>hola</p>";
-                            system.setCharacterText( "<p>Te has quedado sin corona.</p>" );
-                            system.setQuality("corona", false);
-                        }
+                    'darcorona': function( character, system, action) {
+                        system.setCharacterText( "<p>Te has quedado sin corona.</p>" );
+                        system.setQuality("corona", false);
+                        system.doLink('verfamiliafinal');
+                    }
                 }
             }
         ),
-        
+        deberfamilia: new undum.SimpleSituation(
+            "<p>El Conde se enfada ante tu actitud egoísta y te exige la corona y la mitad de las monedas como pago de impuestos para el condado.<br>\
+            <img align='middle' height=375 width=500 src='./media/img/conde2.jpg'>\
+            <br>Ante tal exigencia decides contenerte, pues estás rodeado de soldados de Haraldson y aceptas <a href='./pagarleloquedebes'>pagarle lo que exige e ir a visitar</a>\
+            por fin a tu mujer e hijos, o decides <a href='./intentarasesinarle'>coger la espada que habías saqueado e intentar asesinar al Conde Hardson.</a></p>",
+            {
+                actions:{ 
+                   'pagarleloquedebes': function( character, system, action) {
+                           system.setCharacterText( "<p>Te has quedado con cincuenta monedas y sin corona</p>");
+                           system.setQuality("monedas", 50);
+                           system.setQuality("corona", false);
+                        },
+                       'intentarasesinarle': function( character, system, action) {
+                           system.setCharacterText( "<p>Te has quedado sin corona.</p>" );
+                           system.setQuality("corona", false);
+                       }
+               }
+           }
+        ),
 		verfamilia: new undum.SimpleSituation (
             "<h1>La casa de tu familia</h1>\
             <p>Te estás dirigiendo a tu casa, y ves en la entrada dos hombres del Conde Haraldson custodiando la puerta.\
 			Uno de ellos te advierte que no puedes entrar, pues el Conde exige verte inmediatamente.\
 			Tú, Ragnar Lothbrok, uno de los vikingos con más éxito vivos, te contienes y decides calmarte e ir a <a href='verconde'>visitar al Conde,</a>\
 			pues no quieres crear problemas tan pronto.\
-			</p>"
-        )    
+            </p>",
+            {
+                enter: function(character, system, from) {
+                    system.setCharacterText("<p>Este es tu inventario</p>");
+                }
+            }
+        ),
+        verfamiliafinal: new undum.SimpleSituation (
+            "<h1>La casa de tu familia</h1>\
+            <p>Te reunes con tu familia tras mucho tiempo, sois felices y coméis perdices.</p>\
+            <img height=313 width=500 src='./media/img/familia_ragnar.jpg'>\
+            <h1>FIN</h1>"
+        )
 };
 
 // ---------------------------------------------------------------------------
