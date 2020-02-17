@@ -36,7 +36,7 @@ undum.game.situations = {
                 }
             }
         ),
-        introduccion: new undum.SimpleSituation (
+    introduccion: new undum.SimpleSituation (
             "<h1>La tribu de Kattegat</h1><p>Acabas de llegar a <a href='https://vikings.fandom.com/es/wiki/Kattegat' class='raw' target='_new'>Kattegat.</a><\p><br>\
             <p>Tras un saqueo, el cual ha sido muy exitoso, por fin estás de vuelta en casa.\
             Y traes contigo un tesoro de 100 monedas de oro, una corona y una espada.</p>\
@@ -52,8 +52,14 @@ undum.game.situations = {
 		
         verconde: new undum.SimpleSituation (
             "<h1>El salón del conde Haraldson</h1>\
-            <img height=667 width=500 src='./media/img/conde1.jpg'>\
-            <p>texto</p>"
+            <p>Al entrar al salón, Haraldson te pregunta malhumorado:<br>-¿Por qué no viniste aquí primero al llegar? Sabes que estu obligación al volver de un saqueo.\
+            <img height=667 width=500 src='./media/img/conde1.jpg'></p>\
+            <p>Tras esa desafiante preguntas decides <a href='pedirdisculpas'>pedirle disculpas</a>\
+             por tu actitud o responderle que tu deber es visitar a tu familia primero.\
+            </p>",
+        ),
+        pedirdisculpas: new undum.SimpleSituation(
+            "<p>grasias</p>"
         ),
 		
 		verfamilia: new undum.SimpleSituation (
@@ -63,8 +69,7 @@ undum.game.situations = {
 			Tú, Ragnar Lothbrok, uno de los vikingos con más éxito vivos, te contienes y decides calmarte e ir a <a href='verconde'>visitar al Conde,</a>\
 			pues no quieres crear problemas tan pronto.\
 			</p>"
-        ),
-        
+        )    
 };
 
 // ---------------------------------------------------------------------------
