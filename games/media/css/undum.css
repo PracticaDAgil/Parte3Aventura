@@ -66,8 +66,8 @@ body {
 #title h1 span.fancy {
     font-size: 1.5em;
     line-height: 0;
-    font-family: Palatino, Times, "Times New Roman", serif;
-    font-style: italic;
+    font-family: "Palatino", Times, "Times New Roman", serif;
+    font-style: bold italic;
     margin: 0 -0.2em;
 }
 #title .click_message {
@@ -355,4 +355,7 @@ img.float_left {
 }
 #menu {
     display: none;
+}
+.musica{
+    width: 150px;
 }

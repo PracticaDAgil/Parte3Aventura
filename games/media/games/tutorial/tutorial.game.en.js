@@ -30,15 +30,15 @@ undum.game.slideUpSpeed = 500
 undum.game.situations = {
     start: new undum.SimpleSituation(
         "",
-            {
+        {
                 enter: function(character, system, from) {
                     system.doLink('introduccion');
-                }
+                }                
             }
         ),
     introduccion: new undum.SimpleSituation (
             "<h1>La tribu de Kattegat</h1><p>Acabas de llegar a <a href='https://vikings.fandom.com/es/wiki/Kattegat' class='raw' target='_new'>Kattegat.</a><\p><br>\
-            <p>Tras un saqueo, el cual ha sido muy exitoso, por fin estás de vuelta en casa.\
+            <p>Tras un saqueo el cual ha sido muy exitoso, por fin estás de vuelta en casa.\
             Y traes contigo un tesoro de 100 monedas de oro, una corona y una espada.</p>\
             <img height=350 width=500 src='./media/img/kattegat1.png'> <br>\
             <p>Al entrar en la tribu, recuerdas que Kattegat está gobernado por el\
@@ -51,7 +51,7 @@ undum.game.situations = {
 		
         verconde: new undum.SimpleSituation (
             "<h1>El salón del conde Haraldson</h1>\
-            <p>Al entrar al salón, Haraldson te pregunta malhumorado:<br><br>  -¿Por qué no viniste aquí primero al llegar? Sabes que es tu obligación al volver de un saqueo.\
+            <p>Al entrar al salón, Haraldson te pregunta malhumorado:<br><br>  <i>-¿Por qué no viniste aquí primero al llegar? Sabes que es tu obligación al volver de un saqueo.</i>\
             <img height=667 width=500 src='./media/img/conde1.jpg'></p>\
             <p>Tras esa desafiante pregunta decides <a href='pedirdisculpas'>pedirle disculpas</a>\
              por tu actitud o responderle que <a href='deberfamilia'>tu deber es visitar a tu familia primero.</a>\
@@ -81,10 +81,10 @@ undum.game.situations = {
             }
         ),
         deberfamilia: new undum.SimpleSituation(
-            "<p>El Conde se enfada ante tu actitud egoísta y te exige la corona y la mitad de las monedas como pago de impuestos para el condado.<br>\
+            "<h1>El desafio al Conde</h1><p>El Conde se enfada ante tu actitud egoísta y te exige la corona y la mitad de las monedas como pago de impuestos para el condado.<br>\
             <img align='middle' height=375 width=500 src='./media/img/conde2.jpg'>\
-            <br>Ante tal exigencia decides contenerte, pues estás rodeado de soldados de Haraldson y aceptas <a href='./pagarleloquedebes'>pagarle lo que exige e ir a visitar</a>\
-            por fin a tu mujer e hijos, o decides <a href='./intentarasesinarle'>coger la espada que habías saqueado e intentar asesinar al Conde Hardson.</a></p>",
+            <br>Ante tal exigencia decides contenerte, pues estás rodeado de soldados de Haraldson y aceptas <a href='./pagarleloquedebes'>pagarle lo que exige e ir a visitar por fin a tu mujer e hijos,</a>\
+             o decides <a href='./intentarasesinarle'>coger la espada que habías saqueado e intentar asesinar al Conde Hardson.</a></p>",
             {
                 actions:{ 
                    'pagarleloquedebes': function( character, system, action) {
@@ -94,10 +94,11 @@ undum.game.situations = {
 						   system.doLink('verfamiliafinalconde');
                         },
                        'intentarasesinarle': function( character, system, action) {
-                           system.setCharacterText( "<p>Te has quedado sin corona.</p>" );
+                           system.setCharacterText( "<p>Todas tus pertenencias han sido requisadas.</p>" );
                            system.setQuality("corona", false);
+                           system.setQuality("monedas", 0);
+                           system.setQuality("espada", false);
 						   system.doLink('finalmalo');
-						   system.setQuality("monedas", 0);
                        }
                }
            }
@@ -106,7 +107,8 @@ undum.game.situations = {
             "<h1>La casa de tu familia</h1>\
             <p>Te estás dirigiendo a tu casa, y ves en la entrada dos hombres del Conde Haraldson custodiando la puerta.\
 			Uno de ellos te advierte que no puedes entrar, pues el Conde exige verte inmediatamente.\
-			Tú, Ragnar Lothbrok, uno de los vikingos con más éxito vivos, te contienes y decides calmarte e ir a <a href='verconde'>visitar al Conde,</a>\
+            Tú, Ragnar Lothbrok, un vikingo legendario, del cual las leyendas dicen que desciendes del mismísimo Odín, te contienes\
+             y decides calmarte e ir a <a href='verconde'>visitar al Conde,</a>\
 			pues no quieres crear problemas tan pronto.\
             </p>",
             {
@@ -139,7 +141,6 @@ undum.game.situations = {
 			<a href='introduccion'> Volver a iniciar partida</a></p>\
             <img src='./media/img/final_malo.jpg'>\
             <h1>FIN</h1>"
-			
         )
 };
 
