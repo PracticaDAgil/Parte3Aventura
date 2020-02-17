@@ -45,7 +45,7 @@ undum.game.situations = {
             <a href='https://vikings.fandom.com/es/wiki/Conde_Haraldson' class='raw' target='_new'>Conde Haraldson,</a>\
             con el cual tuviste tus rencillas en el pasado, y no os tenéis mucho aprecio.<\p>\
             <p>Al entrar a la tribu puedes ir a <a href='verfamilia'>Visitar a tu familia,</a> la cual llevas varias \
-            semanas sin ver, o <a href='verconde'>ir a ver al Conde Hardson,</a> el cual ya ha sido advertido de tu \
+            semanas sin ver, o <a href='verconde'>ir a ver al Conde Haraldson,</a> el cual ya ha sido advertido de tu \
             presencia en el condado pues sus soldados te han visto entrar.</p>",
             
         ),
@@ -59,9 +59,24 @@ undum.game.situations = {
             </p>",
         ),
         pedirdisculpas: new undum.SimpleSituation(
-            "<p>grasias</p>"
+            "<p>El Conde te agradece las disculpas pero como es costumbre, te exige el pago de una parte del tesoro como impuestos del condado. Como te has disculpado\
+             solo te pide un tercio del tesoro. Y tú decides entregarle <a href='./darmonedas'>ochenta monedas de oro</a> o <a href='./darcorona'> darle la corona de plata</a></p>",
+             {
+                 actions:{ 
+                    'darmonedas': function( character, system, action) {
+                            "<p>hola</p>";
+                            system.setCharacterText( "<p>Te has quedado con 20 monedas.</p>" );
+                            system.setQuality("monedas", 20);
+                        },
+                        'darcorona': function( character, system, action) {
+                            "<p>hola</p>";
+                            system.setCharacterText( "<p>Te has quedado sin corona.</p>" );
+                            system.setQuality("corona", false);
+                        }
+                }
+            }
         ),
-		
+        
 		verfamilia: new undum.SimpleSituation (
             "<h1>La casa de tu familia</h1>\
             <p>Te estás dirigiendo a tu casa, y ves en la entrada dos hombres del Conde Haraldson custodiando la puerta.\
@@ -82,7 +97,7 @@ undum.game.start = "start";
  * that quality will never show up in the character bar in the UI. */
 undum.game.qualities = {
     corona: new undum.OnOffQuality(
-        "Corona", {priority:"0001", group:'stats'}
+        "Corona de plata", {priority:"0001", group:'stats'}
     ),
     espada: new undum.OnOffQuality(
         "Espada", {priority:"0001", group:'stats'}
