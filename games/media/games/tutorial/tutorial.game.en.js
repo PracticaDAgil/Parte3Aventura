@@ -33,28 +33,31 @@ undum.game.situations = {
         {
                 enter: function(character, system, from) {
                     system.doLink('introduccion');
-                }                
+                }   
             }
         ),
     introduccion: new undum.SimpleSituation (
-            "<h1>La tribu de Kattegat</h1><p>Acabas de llegar a <a href='https://vikings.fandom.com/es/wiki/Kattegat' class='raw' target='_new'>Kattegat.</a><\p><br>\
-            <p>Tras un saqueo el cual ha sido muy exitoso, por fin estás de vuelta en casa.\
-            Y traes contigo un tesoro de 100 monedas de oro, una corona y una espada.</p>\
+            "<h1>La tribu de Kattegat</h1><p>Acabas de llegar a <a href='https://vikings.fandom.com/es/wiki/Kattegat' class='raw' target='_new'>Kattegat.</a>\
+            Tras un saqueo el cual ha sido muy exitoso, por fin estás de vuelta en casa.\
+            Y traes contigo un tesoro de cien monedas de oro, una corona de plata y una espada.\
             <img height=350 width=500 src='./media/img/kattegat1.png'> <br>\
             <p>Al entrar en la tribu, recuerdas que Kattegat está gobernado por el\
             <a href='https://vikings.fandom.com/es/wiki/Conde_Haraldson' class='raw' target='_new'>Conde Haraldson,</a>\
             con el cual tuviste tus rencillas en el pasado, y no os tenéis mucho aprecio.<\p>\
-            <p>Al entrar a la tribu puedes ir a <a href='verfamilia'>Visitar a tu familia,</a> la cual llevas varias \
+            <p>Al entrar a la tribu puedes ir a <a href='verfamilia'>visitar a tu familia,</a> la cual llevas varias \
             semanas sin ver, o <a href='verconde'>ir a ver al Conde Haraldson,</a> el cual ya ha sido advertido de tu \
             presencia en el condado pues sus soldados te han visto entrar.</p>",
         ),
 		
         verconde: new undum.SimpleSituation (
             "<h1>El salón del conde Haraldson</h1>\
-            <p>Al entrar al salón, Haraldson te pregunta malhumorado:<br><br>  <i>-¿Por qué no viniste aquí primero al llegar? Sabes que es tu obligación al volver de un saqueo.</i>\
+            <p>Al entrar al salón, Haraldson se encuentra sentado en el trono de Conde, acompañado por su mujer.\
+            Te observa fijamente, la tensión es insoportable, y malhumorado, te acaba diciendo:<br>  &nbsp&nbsp&nbsp<i>-Vuelves de un saqueo, y en vez de cumplir con tu obligación, la cual\
+            es venir a pagar el correspondiente tributo al condado, te vas a tu casa. Los barcos que te presté para el viaje no fueron precisamente porque me caigas bien, \
+            ¿o es que pensabas esconder lo que has saqueado?</i>\
             <img height=667 width=500 src='./media/img/conde1.jpg'></p>\
-            <p>Tras esa desafiante pregunta decides <a href='pedirdisculpas'>pedirle disculpas</a>\
-             por tu actitud o responderle que <a href='deberfamilia'>tu deber es visitar a tu familia primero.</a>\
+            <p>Tras esa desafiante pregunta decides <a href='pedirdisculpas'>no entrar en su juego y pedirle disculpas\
+             por tu actitud</a> o responderle que <a href='deberfamilia'>tu deber es visitar a tu familia primero y no a un viejo conde tarado.</a>\
             </p>",
             {
                 enter: function(character, system, from) {
@@ -63,19 +66,19 @@ undum.game.situations = {
             }
         ),
         pedirdisculpas: new undum.SimpleSituation(
-            "<p>El Conde te agradece las disculpas pero como es costumbre, te exige el pago de una parte del tesoro como impuestos del condado. Como te has disculpado\
-             solo te pide un tercio del tesoro. Y tú decides entregarle <a href='./darmonedas'>ochenta monedas de oro</a> o <a href='./darcorona'> darle la corona de plata</a></p>",
+            "<h1>El agradecimiento del conde</h1><p>El Conde te agradece las disculpas pero como es costumbre, te exige el pago de una parte del tesoro como impuestos del condado. Como te has disculpado\
+             solo te pide un tercio del tesoro. Y tú decides entregarle <a href='./darmonedas'>cuarenta monedas de oro</a> o <a href='./darcorona'> darle la corona de plata</a></p>",
              {
                  actions:{ 
                     'darmonedas': function( character, system, action) {
-                            system.setCharacterText( "<p>Te has quedado con veinte monedas.</p>" );
-                            system.setQuality("monedas", 20);
-                            system.doLink('verfamiliafinal');
+                            system.setCharacterText( "<p>Te has quedado con sesenta monedas.</p>" );
+                            system.setQuality("monedas", 60);
+                            system.doLink('verfamiliafinalconde');
                         },
                     'darcorona': function( character, system, action) {
                         system.setCharacterText( "<p>Te has quedado sin corona.</p>" );
                         system.setQuality("corona", false);
-                        system.doLink('verfamiliafinal');
+                        system.doLink('verfamiliafinalconde');
                     }
                 }
             }
@@ -83,8 +86,9 @@ undum.game.situations = {
         deberfamilia: new undum.SimpleSituation(
             "<h1>El desafio al Conde</h1><p>El Conde se enfada ante tu actitud egoísta y te exige la corona y la mitad de las monedas como pago de impuestos para el condado.<br>\
             <img align='middle' height=375 width=500 src='./media/img/conde2.jpg'>\
-            <br>Ante tal exigencia decides contenerte, pues estás rodeado de soldados de Haraldson y aceptas <a href='./pagarleloquedebes'>pagarle lo que exige e ir a visitar por fin a tu mujer e hijos,</a>\
-             o decides <a href='./intentarasesinarle'>coger la espada que habías saqueado e intentar asesinar al Conde Hardson.</a></p>",
+            <br>Te encuentras rodeado de soldados de Haraldson, esto hace que <a href='./pagarleloquedebes'>te contengas y aceptes pagarle lo que exige e ir a visitar\
+             por fin a tu mujer e hijos,</a>\
+             o decidas <a href='./intentarasesinarle'>coger la espada que habías saqueado e intentar asesinar al Conde Haraldson.</a></p>",
             {
                 actions:{ 
                    'pagarleloquedebes': function( character, system, action) {
@@ -106,10 +110,11 @@ undum.game.situations = {
 		verfamilia: new undum.SimpleSituation (
             "<h1>La casa de tu familia</h1>\
             <p>Te estás dirigiendo a tu casa, y ves en la entrada dos hombres del Conde Haraldson custodiando la puerta.\
-			Uno de ellos te advierte que no puedes entrar, pues el Conde exige verte inmediatamente.\
+            Cuando te acercas, uno de ellos te advierte que no puedes entrar, pues el Conde exige verte inmediatamente.\
+            <img width=500 height=535 src='./media/img/ragnar2.jpg'>\
             Tú, Ragnar Lothbrok, un vikingo legendario, del cual las leyendas dicen que desciendes del mismísimo Odín, te contienes\
-             y decides calmarte e ir a <a href='verconde'>visitar al Conde,</a>\
-			pues no quieres crear problemas tan pronto.\
+             y decides calmarte e <a href='verconde'>ir a visitar al Conde,</a>\
+			pues no quieres crear problemas, al menos, no tan pronto.\
             </p>",
             {
                 enter: function(character, system, from) {
@@ -120,26 +125,17 @@ undum.game.situations = {
 		
 		 verfamiliafinalconde: new undum.SimpleSituation (
             "<p>El conde te agradece tu actitud y permite que vayas a ver a tu familia.</p>\
-			<h1>La casa de tu familia</h1>\
-			<p>Te reunes con tu familia tras mucho tiempo, sois felices y coméis perdices.\
-			<a href='introduccion'> Volver a iniciar partida</a></p>\
-            <img height=313 width=500 src='./media/img/familia_ragnar.jpg'>\
-            <h1>FIN</h1>"
-        ),
-		
-        verfamiliafinal: new undum.SimpleSituation (
-            "<h1>La casa de tu familia</h1>\
-            <p>Te reunes con tu familia tras mucho tiempo, sois felices y coméis perdices.\
-			<a href='introduccion'> Volver a iniciar partida</a></p>\
+			<h1>LA CASA DE TU FAMILIA</h1>\
+			<p>Tras mucho tiempo, por fin te reencuentras con tu familia, sois felices y coméis perdices.<br>\
             <img height=313 width=500 src='./media/img/familia_ragnar.jpg'>\
             <h1>FIN</h1>"
         ),
 		
 		finalmalo: new undum.SimpleSituation (
-            "<h1></h1>\
-            <p>Ante tal estúpida idea, los soldados alzan sus armas y te bloquean el paso, eres detenido y te quitan todo el tesoro y te llevan preso.\
-			<a href='introduccion'> Volver a iniciar partida</a></p>\
+            "<h1>EL ARRESTO DE RAGNAR</h1>\
+            <p>Ante tal estúpida idea, los soldados alzan sus armas y te bloquean el paso, eres detenido, te quitan todo el tesoro y te llevan preso.\
             <img src='./media/img/final_malo.jpg'>\
+            <p>¿A quién se le ocurriría hacer tal cosa? Esto no es ciencia ficción.</p>\
             <h1>FIN</h1>"
         )
 };
@@ -160,7 +156,7 @@ undum.game.qualities = {
         "Espada", {priority:"0001", group:'stats'}
     ),
     monedas: new undum.IntegerQuality(
-        "Monedas", {priority:"0001", group:'stats'}
+        "Monedas de oro", {priority:"0001", group:'stats'}
     )
 };
 
