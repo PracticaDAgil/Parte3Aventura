@@ -1,5 +1,5 @@
 body {
-    background: #170804 url("../img/page_bg.jpg") repeat-x left top;
+    background: #170804 url("../img/textura_fondo.jpg") repeat-x left top;
     font-family: Palatino, Times, "Times New Roman", serif;
     font-size: 18px;
     line-height: 1.6em;
@@ -22,7 +22,7 @@ body {
 }
 #title {
     max-width: 28em;
-    background: #e6e6c6 url("../img/title_bg.jpg") repeat -1.1em -1.1em;
+    background: #e6e6c6 url("../img/textura1.jpg") repeat -1.1em -1.1em;
     margin: 2.2em auto 1.1em auto;
     padding: 1.7em;
     border: 1.1em solid rgba(0,0,0,0.25);
@@ -64,10 +64,10 @@ body {
     rgba(0,0,0,0.1) -1px -1px 2px;
 }
 #title h1 span.fancy {
-    font-size: 2.5em;
+    font-size: 1.5em;
     line-height: 0;
-    font-family: Tangerine, Palatino, Times, "Times New Roman", serif;
-    font-style: italic;
+    font-family: "Palatino", Times, "Times New Roman", serif;
+    font-style: bold italic;
     margin: 0 -0.2em;
 }
 #title .click_message {
@@ -177,16 +177,17 @@ a {
     border-bottom: 1px solid transparent;
 }
 a.raw {
-    padding-right: 14px;
-    background: transparent url("../img/external_link.png") no-repeat right 4px;
+    background: transparent url("../img/text_bg.jpg") no-repeat right 4px;
 }
 a:hover {
     border-bottom: 1px dotted #900;
 }
 
-img.float_right {
-    float: right;
-    margin: 1.1em 0 1.1em 1.1em;
+img.centro {
+    vertical-align: center;
+    height: 350px;
+    width: 500px;
+   /* margin: 1.1em 0 1.1em 1.1em;*/
 }
 img.float_left {
     float: left;
@@ -354,4 +355,7 @@ img.float_left {
 }
 #menu {
     display: none;
+}
+.musica{
+    width: 150px;
 }
